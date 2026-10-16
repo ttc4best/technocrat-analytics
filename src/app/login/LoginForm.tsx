@@ -7,6 +7,7 @@ import {
   Heading,
   Icon,
   PasswordField,
+  Text,
   TextField,
 } from '@umami/react-zen';
 import { useRouter } from 'next/navigation';
@@ -37,16 +38,38 @@ export function LoginForm() {
   };
 
   return (
-    <Column justifyContent="center" alignItems="center" gap="6">
-      <Icon size="lg">
-        <Logo />
-      </Icon>
-      <Heading>umami</Heading>
+    <Column
+      justifyContent="center"
+      alignItems="center"
+      gap="4"
+      style={{
+        maxWidth: 380,
+        width: '100%',
+        padding: '32px 24px',
+        borderRadius: 16,
+        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05)',
+      }}
+    >
+      <img
+        src="/logo.png"
+        alt="Technocrat Logo"
+        style={{ width: 48, height: 48, objectFit: 'contain' }}
+      />
+
+      <Column alignItems="center" gap="1" style={{ textAlign: 'center' }}>
+        <Heading size="2" style={{ fontWeight: 700 }}>
+          Technocrat Analytics
+        </Heading>
+        <Text color="muted" style={{ fontSize: 14, maxWidth: 300, lineHeight: 1.4 }}>
+          Hey, welcome! Log in to check and monitor your website activities.
+        </Text>
+      </Column>
+
       <Form
         onSubmit={handleSubmit}
         error={getErrorMessage(error)}
         defaultValues={{ username: '', password: '' }}
-        style={{ minWidth: 300 }}
+        style={{ width: '100%', marginTop: 8 }}
       >
         <FormField
           label={t(labels.username)}
@@ -65,11 +88,12 @@ export function LoginForm() {
         >
           <PasswordField autoComplete="current-password" />
         </FormField>
+
         <FormButtons>
           <FormSubmitButton
             data-test="button-submit"
             variant="primary"
-            style={{ flex: 1 }}
+            style={{ width: '100%', marginTop: 8 }}
             isDisabled={false}
           >
             {t(labels.login)}
